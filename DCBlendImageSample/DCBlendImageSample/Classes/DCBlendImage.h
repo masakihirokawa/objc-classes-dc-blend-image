@@ -14,7 +14,11 @@
     CGFloat     blendAlpha_;
 }
 
+#pragma mark property prototype
+@property (nonatomic, assign) CGBlendMode blendMode;
+
 #pragma mark method prototype
 - (id)initWithImage:baseImageName blendImage:(NSString *)blendImageName blendMode:(CGBlendMode)blendMode blendAlpha:(CGFloat)blendAlpha;
+- (void)setBlendMode:(CGBlendMode)blendMode;
 
 @end
