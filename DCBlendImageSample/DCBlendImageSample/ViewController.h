@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DCBlendImage.h"
 
 @interface ViewController : UIViewController
 

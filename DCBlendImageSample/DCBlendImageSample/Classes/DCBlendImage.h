@@ -7,11 +7,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DCBlendImage : UIImage {
+@interface DCBlendImage : UIView {
     UIImage     *baseImage_;
     UIImage     *blendImage_;
     CGBlendMode blendMode_;
     CGFloat     blendAlpha_;
 }
+
+#pragma mark method prototype
+- (id)initWithImage:baseImageName blendImage:(NSString *)blendImageName blendMode:(CGBlendMode)blendMode blendAlpha:(CGFloat)blendAlpha;
 
 @end

@@ -17,13 +17,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    UIView *blendImage = [[DCBlendImage alloc] initWithImage:@"Asymmetry_640_1136.jpg" blendImage:@"blend_image.png" blendMode:kCGBlendModeScreen blendAlpha:0.5f];
+    blendImage.center = self.view.center;
+    blendImage.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    [self.view addSubview:blendImage];
+    
+    [blendImage setNeedsDisplay];
 }
 
 @end

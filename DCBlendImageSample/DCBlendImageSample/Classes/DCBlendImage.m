@@ -20,6 +20,11 @@
     return self;
 }
 
+- (void)setMode
+{
+    blendMode_ = kCGBlendModeNormal;
+}
+
 - (void)drawRect:(CGRect)rect
 {
     [baseImage_ drawInRect:rect];
