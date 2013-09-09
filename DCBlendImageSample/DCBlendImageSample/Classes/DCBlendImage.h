@@ -7,18 +7,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DCBlendImage : UIView {
-    UIImage     *baseImage_;
-    UIImage     *blendImage_;
-    CGBlendMode blendMode_;
-    CGFloat     blendAlpha_;
-}
-
-#pragma mark property prototype
-@property (nonatomic, assign) CGBlendMode blendMode;
+@interface DCBlendImage : UIImage
 
 #pragma mark method prototype
-- (id)initWithImage:baseImageName blendImage:(NSString *)blendImageName blendMode:(CGBlendMode)blendMode blendAlpha:(CGFloat)blendAlpha;
-- (void)setBlendMode:(CGBlendMode)blendMode;
++ (UIImage *)blendImage:(UIImage *)baseImage blendImage:(UIImage *)blendImage blendMode:(CGBlendMode)blendMode blendAlpha:(CGFloat)blendAlpha rect:(CGRect)rect;
++ (UIImageView *)blendImageView:(UIImage *)baseImage blendImage:(UIImage *)blendImage blendMode:(CGBlendMode)blendMode blendAlpha:(CGFloat)blendAlpha rect:(CGRect)rect;
 
 @end

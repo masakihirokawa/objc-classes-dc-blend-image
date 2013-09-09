@@ -17,13 +17,43 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    UIView *blendImage = [[DCBlendImage alloc] initWithImage:@"Asymmetry_640_1136.jpg" blendImage:@"blend_image.png" blendMode:kCGBlendModeScreen blendAlpha:0.5f];
-    blendImage.center = self.view.center;
-    blendImage.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-    [self.view addSubview:blendImage];
     
-    [blendImage setNeedsDisplay];
+    //合成された UIImageを取得し画面に追加
+    [self setCompositeImage];
+    
+    //合成された UIImageViewを取得し画面に追加
+    //[self setCompositeImageView];
+}
+
+//合成された UIImageを取得し画面に追加
+- (void)setCompositeImage
+{
+    UIImage *baseImage = [self getUIImageFromResources:BASE_IMG_NAME ext:BASE_IMG_EXT];
+    UIImage *blendImage = [self getUIImageFromResources:BLEND_IMG_NAME ext:BLEND_IMG_EXT];
+    UIImage *compositeImage = [DCBlendImage blendImage:baseImage blendImage:blendImage
+                                             blendMode:kCGBlendModeScreen blendAlpha:BLEND_ALPHA
+                                                  rect:IMG_RECT];
+    UIImageView *compositeImageView = [[UIImageView alloc] initWithImage:compositeImage];
+    [self.view addSubview:compositeImageView];
+}
+
+//合成された UIImageViewを取得し画面に追加
+- (void)setCompositeImageView
+{
+    UIImage *baseImage = [self getUIImageFromResources:BASE_IMG_NAME ext:BASE_IMG_EXT];
+    UIImage *blendImage = [self getUIImageFromResources:BLEND_IMG_NAME ext:BLEND_IMG_EXT];
+    UIImageView *compositeImageView = [DCBlendImage blendImageView:baseImage blendImage:blendImage
+                                                         blendMode:kCGBlendModeScreen blendAlpha:BLEND_ALPHA
+                                                              rect:IMG_RECT];
+    [self.view addSubview:compositeImageView];
+}
+
+//画像ファイル取得
+- (UIImage *)getUIImageFromResources:(NSString*)fileName ext:(NSString*)ext
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:ext];
+    UIImage *img = [[UIImage alloc] initWithContentsOfFile:path];
+    return (img);
 }
 
 @end
